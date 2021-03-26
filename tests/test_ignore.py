@@ -19,8 +19,8 @@ def compare_matches_ignore(match):
     return (match["name"], match["match"]) if isinstance(match, dict) else (match,)
 
 
-@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])
-@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")
+@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])  # nosec
+@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")  # nosec
 def test_cache_catches_last_found_secrets(client):
     """
     GIVEN an empty cache and an empty config matches-ignore section
@@ -57,8 +57,8 @@ def test_cache_catches_last_found_secrets(client):
     cache.load_cache()
 
 
-@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])
-@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")
+@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])  # nosec
+@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")  # nosec
 def test_cache_catches_nothing(client):
     """
     GIVEN a cache of last found secrets same as config ignored-matches
@@ -86,8 +86,8 @@ def test_cache_catches_nothing(client):
         assert cache.last_found_secrets == []
 
 
-@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])
-@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")
+@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])  # nosec
+@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")  # nosec
 def test_cache_old_config_no_new_secret(client):
     """
     GIVEN a cache of last found secrets same as config ignored-matches
@@ -116,8 +116,8 @@ def test_cache_old_config_no_new_secret(client):
         assert cache.last_found_secrets == []
 
 
-@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])
-@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")
+@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])  # nosec
+@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")  # nosec
 def test_ignore_last_found(client):
     """
     GIVEN a cache of last found secrets not empty
@@ -139,8 +139,8 @@ def test_ignore_last_found(client):
     assert cache.last_found_secrets == FOUND_SECRETS
 
 
-@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])
-@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")
+@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])  # nosec
+@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")  # nosec
 def test_ignore_last_found_with_manually_added_secrets(client):
     """
     GIVEN a cache containing part of config ignored-matches secrets
@@ -163,8 +163,8 @@ def test_ignore_last_found_with_manually_added_secrets(client):
     assert matches_ignore == found_secrets
 
 
-@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])
-@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")
+@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])  # nosec
+@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")  # nosec
 def test_do_not_duplicate_last_found_secrets(client):
     """
     GIVEN 2 policy breaks on different files with the same ignore sha
@@ -182,8 +182,8 @@ def test_do_not_duplicate_last_found_secrets(client):
     assert len(cache.last_found_secrets) == 1
 
 
-@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])
-@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")
+@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])  # nosec
+@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")  # nosec
 def test_do_not_add_policy_breaks_to_last_found(client):
     """
     GIVEN 2 policy breaks on different files with the same ignore sha
@@ -200,8 +200,8 @@ def test_do_not_add_policy_breaks_to_last_found(client):
     assert len(cache.last_found_secrets) == 0
 
 
-@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])
-@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")
+@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])  # nosec
+@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")  # nosec
 def test_ignore_last_found_preserve_previous_config(client):
     """
     GIVEN a cache containing new secrets AND a config not empty
@@ -231,8 +231,8 @@ def test_ignore_last_found_preserve_previous_config(client):
     assert config.exit_zero is True
 
 
-@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])
-@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")
+@patch("ggshield.config.Config.CONFIG_LOCAL", ["/tmp/.gitguardian.yml"])  # nosec
+@patch("ggshield.config.Config.DEFAULT_CONFIG_LOCAL", "/tmp/.gitguardian.yml")  # nosec
 def test_ignore_last_found_compatible_with_previous_matches_ignore_format(client):
     """
     GIVEN a cache containing new secrets
